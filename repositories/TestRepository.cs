@@ -37,7 +37,8 @@ namespace SinglePageTestWebsite.Repositories
             IEnumerable<TestApi> searchResults = Enumerable.Empty<TestApi>();
             if (!string.IsNullOrWhiteSpace(q))
             {
-                searchResults = Umbraco.ContentQuery.Search(q).Where(x => x.IsVisible()).Take(10);
+                // searchResults = Umbraco.ContentQuery.Search(q).Where(x => x.IsVisible()).Take(10);
+                searchResults = TestApis.Where(p => p.Title == q).Take(10);
             }
             var results = searchResults.Select(
                 x =>
@@ -49,7 +50,7 @@ namespace SinglePageTestWebsite.Repositories
                         UserId = x.UserId
                     }
             );
-            return JsonResult(new { results });
+            return results;
         }
 
         public IEnumerable<TestApi> GetTestApis()
