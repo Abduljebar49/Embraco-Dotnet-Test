@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SinglePageTestWebsite.Entities;
-
+using Umbraco.Cms.Core.Models;
 namespace SinglePageTestWebsite.Repositories
 {
     public class TestApiRepository : ITestApiRepository
@@ -31,6 +31,26 @@ namespace SinglePageTestWebsite.Repositories
                     Body = " this is body"
                 },
             };
+
+        public IEnumerable<TestApi> GetResult(string q)
+        {
+            IEnumerable<TestApi> searchResults = Enumerable.Empty<TestApi>();
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                searchResults = Umbraco.ContentQuery.Search(q).Where(x => x.IsVisible()).Take(10);
+            }
+            var results = searchResults.Select(
+                x =>
+                    new TestApi
+                    {
+                        Title = x.Title,
+                        Body = x.Body,
+                        Id = x.Id,
+                        UserId = x.UserId
+                    }
+            );
+            return JsonResult(new { results });
+        }
 
         public IEnumerable<TestApi> GetTestApis()
         {

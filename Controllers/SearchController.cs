@@ -18,7 +18,7 @@ namespace SinglePageTestWebsite.Controllers
         [HttpGet]
         public IEnumerable<TestApi> Search(string q)
         {
-            var results = repository.GetTestApis().Select(item => item.asDto(item));
+            var results = repository.GetResult(q).Select(item => item.asDto(item));
             return results;
         }
 
