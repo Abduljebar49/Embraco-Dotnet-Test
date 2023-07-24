@@ -7,7 +7,7 @@ $(document).ready(function() {
       return;
     }
     $.ajax({
-      url: '/umbraco/api/search',
+      url: '/umbraco/api/search/search',
       type: 'GET',
       data: { q: query },
       success: function(data) {

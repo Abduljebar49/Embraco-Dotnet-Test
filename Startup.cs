@@ -32,7 +32,6 @@ namespace SinglePageTestWebsite
         /// </remarks>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ITestApiRepository, TestApiRepository>();
 
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
@@ -40,6 +39,7 @@ namespace SinglePageTestWebsite
                 .AddDeliveryApi()
                 .AddComposers()
                 .Build();
+            services.AddSingleton<ITestApiRepository, TestApiRepository>();
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace SinglePageTestWebsite.Controllers
             this.repository = repository;
         }
         //umbraco/api/search
-        [HttpGet]
+        [HttpGet("search")]
         public IEnumerable<TestApi> Search(string q)
         {
             var results = repository.GetResult(q).Select(item => item.asDto(item));
