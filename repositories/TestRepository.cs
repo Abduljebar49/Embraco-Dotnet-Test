@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SinglePageTestWebsite.Entities;
 using Umbraco.Cms.Core.Models;
+
 namespace SinglePageTestWebsite.Repositories
 {
     public class TestApiRepository : ITestApiRepository
@@ -13,21 +14,35 @@ namespace SinglePageTestWebsite.Repositories
                 {
                     Id = 1,
                     UserId = 2,
-                    Title = "this is title",
+                    Title = "Apple",
                     Body = " this is body"
                 },
                 new TestApi
                 {
                     Id = 2,
                     UserId = 2,
-                    Title = "this is title",
+                    Title = "banana",
                     Body = " this is body"
                 },
                 new TestApi
                 {
                     Id = 3,
                     UserId = 2,
-                    Title = "this is title",
+                    Title = "Carot",
+                    Body = " this is body"
+                },
+                new TestApi
+                {
+                    Id = 4,
+                    UserId = 2,
+                    Title = "Berry",
+                    Body = " this is body"
+                },
+                new TestApi
+                {
+                    Id = 5,
+                    UserId = 2,
+                    Title = "Avocado",
                     Body = " this is body"
                 },
             };
