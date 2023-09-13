@@ -7,13 +7,14 @@ $(document).ready(function() {
       return;
     }
     $.ajax({
-      url: '/umbraco/api/search/search',
+      url: '/api/search/',
       type: 'GET',
       data: { q: query },
       success: function(data) {
           console.log("data ;",data);
-        var results = data.results;
+        var results = data;
         var listItems = '';
+        console.log
         results.forEach(function(result) {
           listItems += '<li>' + result.title + '</li>';
         });

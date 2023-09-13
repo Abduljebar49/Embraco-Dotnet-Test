@@ -6,6 +6,8 @@ using Umbraco.Cms.Web.Common.Controllers;
 
 namespace SinglePageTestWebsite.Controllers
 {
+    [ApiController]
+	[Route("Api/[controller]")]
     public class SearchController : UmbracoApiController
     {
         private readonly ITestApiRepository repository;
@@ -22,9 +24,18 @@ namespace SinglePageTestWebsite.Controllers
             return results;
         }
 
-        [HttpGet]
-        public string testText(){
-            return "this is text";
+        [HttpGet()]
+        public IEnumerable<TestApi> SearchQ([FromQuery] string q)
+        {
+
+            var results = repository.GetResult(q).Select(item => item.asDto(item));
+            return results;
         }
+
+
+        // [HttpGet]
+        // public string testText(){
+        //     return "this is text";
+        // }
     }
 }

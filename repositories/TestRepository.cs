@@ -38,7 +38,7 @@ namespace SinglePageTestWebsite.Repositories
             if (!string.IsNullOrWhiteSpace(q))
             {
                 // searchResults = Umbraco.ContentQuery.Search(q).Where(x => x.IsVisible()).Take(10);
-                searchResults = TestApis.Where(p => p.Title == q).Take(10);
+                searchResults = TestApis.Where(p => p.Title.Contains(q)).Take(10);
             }
             var results = searchResults.Select(
                 x =>
