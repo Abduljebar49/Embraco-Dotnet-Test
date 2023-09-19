@@ -31,11 +31,5 @@ namespace SinglePageTestWebsite.Controllers
             var results = repository.GetResult(q).Select(item => item.asDto(item));
             return results;
         }
-
-
-        // [HttpGet]
-        // public string testText(){
-        //     return "this is text";
-        // }
     }
 }
